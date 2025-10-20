@@ -17,7 +17,7 @@ namespace IPG203HW
         {
             get { return title; }
             set {
-                //if(BookValidator.IsValidTitle(value))
+                if(BookValidator.IsValidTitle(value))
                     title = value;
             }
         }
@@ -27,7 +27,7 @@ namespace IPG203HW
             get { return author; }
             set
             {
-                //if(BookValidator.IsValidAuthor(value))
+                if(BookValidator.IsValidAuthor(value))
                     author = value;
             }
         }
@@ -35,25 +35,25 @@ namespace IPG203HW
 
         public AbstractBook(string ISBN, string Title, string Author)
         {
-            //if (!BookValidator.IsValidISBN(ISBN)) use BookValidator in Question 5
-            //    throw new ArgumentException("Invalid ISBN for Book");
+            if (!BookValidator.IsValidISBN(ISBN))
+                throw new ArgumentException("Invalid ISBN for Book");
             isbn = ISBN;
             title = Title;
             author = Author;
-            //LibraryStats.TotalBooksCount++; use LibraryStats in Question 5
+            LibraryStats.TotalBooksCount++;
         }
 
         public virtual void Borrow()
         {
             isBorrowed = true;
-            //LibraryStats.TotalBooksBorrowed++; use LibraryStats in Question 5
+            LibraryStats.TotalBooksBorrowed++;
             OnBookBorrowed?.Invoke($"{title} has been borrowed");
         }
 
         public virtual void Return()
         {
             isBorrowed = false;
-            //LibraryStats.TotalBooksBorrowed--; use LibraryStats in Question 5
+            LibraryStats.TotalBooksBorrowed--;
             OnBookReturned?.Invoke($"{title} has been returned");
         }
 

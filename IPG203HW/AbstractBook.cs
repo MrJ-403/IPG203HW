@@ -8,10 +8,30 @@ namespace IPG203HW
 {
     internal abstract class AbstractBook : IBookActions
     {
-        private string isbn {get;}
-        private string title { get; set; }
-        private string author { get; set; }
+        private readonly string isbn;
+        private string title;
+        private string author;
         private bool isBorrowed;
+
+        public string Title
+        {
+            get { return title; }
+            set {
+                //if(BookValidator.IsValidTitle(value))
+                    title = value;
+            }
+        }
+
+        public string Author
+        {
+            get { return author; }
+            set
+            {
+                //if(BookValidator.IsValidAuthor(value))
+                    author = value;
+            }
+        }
+
 
         public AbstractBook(string ISBN, string Title, string Author)
         {
@@ -37,8 +57,18 @@ namespace IPG203HW
             OnBookReturned?.Invoke($"{title} has been returned");
         }
 
-        public abstract string GetGenre();
+        public string GetISBN()
+        {
+            return isbn;
+        }
 
+        public bool IsBorrowed()
+        {
+            return isBorrowed;
+        }
+
+        public abstract string GetGenre();
+        
         public delegate void BookEventHandler(string message);
         public event BookEventHandler OnBookBorrowed;
         public event BookEventHandler OnBookReturned;

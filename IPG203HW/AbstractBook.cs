@@ -43,6 +43,7 @@ namespace IPG203HW
             LibraryStats.TotalBooksCount++;
         }
 
+        //Borrow the book, invokes the OnBookBorrowed Event
         public virtual void Borrow()
         {
             isBorrowed = true;
@@ -50,6 +51,7 @@ namespace IPG203HW
             OnBookBorrowed?.Invoke($"{title} has been borrowed");
         }
 
+        //Return the book, invokes the OnBookReturn Event
         public virtual void Return()
         {
             isBorrowed = false;
@@ -67,6 +69,7 @@ namespace IPG203HW
             return isBorrowed;
         }
 
+        //Should be overriden in children classes
         public abstract string GetGenre();
         
         public delegate void BookEventHandler(string message);

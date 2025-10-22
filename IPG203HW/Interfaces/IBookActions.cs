@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IPG203HW
+namespace IPG203HW.Interfaces
 {
     internal interface IBookActions
     {

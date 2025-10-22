@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace IPG203HW
+namespace IPG203HW.Utilities
 {
     internal static class BookValidator
     {

@@ -1,10 +1,12 @@
-﻿using System;
+﻿using IPG203HW.Interfaces;
+using IPG203HW.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IPG203HW
+namespace IPG203HW.Abstracts
 {
     internal abstract class AbstractBook : IBookActions
     {
@@ -16,8 +18,9 @@ namespace IPG203HW
         public string Title
         {
             get { return title; }
-            set {
-                if(BookValidator.IsValidTitle(value))
+            set
+            {
+                if (BookValidator.IsValidTitle(value))
                     title = value;
             }
         }
@@ -27,7 +30,7 @@ namespace IPG203HW
             get { return author; }
             set
             {
-                if(BookValidator.IsValidAuthor(value))
+                if (BookValidator.IsValidAuthor(value))
                     author = value;
             }
         }
@@ -71,7 +74,7 @@ namespace IPG203HW
 
         //Should be overriden in children classes
         public abstract string GetGenre();
-        
+
         public delegate void BookEventHandler(string message);
         public event BookEventHandler OnBookBorrowed;
         public event BookEventHandler OnBookReturned;
